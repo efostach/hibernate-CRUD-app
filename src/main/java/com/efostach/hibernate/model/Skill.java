@@ -1,20 +1,30 @@
 package com.efostach.hibernate.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "skills")
 public class Skill {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
+    @ManyToMany
+    @JoinTable (name="employee_skills",
+            joinColumns=@JoinColumn (name="skill_id"),
+            inverseJoinColumns=@JoinColumn(name="employee_id"))
+    private List<Employee> employees;
 
-    public Skill(Integer id, String name) {
+    public Skill() {
+    }
+
+    public Skill(Integer id, String name, List<Employee> employees) {
         this.id = id;
         this.name = name;
+        this.employees = employees;
     }
 
     public Integer getId() {
@@ -31,6 +41,14 @@ public class Skill {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override

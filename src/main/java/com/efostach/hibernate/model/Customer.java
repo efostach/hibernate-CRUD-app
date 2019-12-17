@@ -1,23 +1,30 @@
 package com.efostach.hibernate.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
+    @ManyToMany
+    @JoinTable (name="customer_projects",
+            joinColumns=@JoinColumn (name="team_id"),
+            inverseJoinColumns=@JoinColumn(name="project_id"))
+    private List<Project> projects;
 
     private Customer() {
     }
 
-    public Customer(Integer id, String name) {
+    public Customer(Integer id, String name, List<Project> projects) {
         this.id = id;
         this.name = name;
+        this.projects = projects;
     }
 
     public Integer getId() {
@@ -36,37 +43,18 @@ public class Customer {
         this.name = name;
     }
 
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+
     @Override
     public String toString() {
         return new StringBuilder().append(id).append(",")
                 .append(name)
                 .append("\n").toString();
-    }
-
-    public static Builder newBuilder() {
-        return new Customer().new Builder();
-    }
-
-    public class Builder {
-
-        private Builder() {
-
-        }
-
-        public Builder setId(Integer id) {
-            Customer.this.id = id;
-
-            return this;
-        }
-
-        public Builder setName(String name) {
-            Customer.this.name = name;
-
-            return this;
-        }
-
-        public Customer build() {
-            return Customer.this;
-        }
     }
 }
