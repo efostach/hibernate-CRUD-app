@@ -11,6 +11,8 @@ import static com.efostach.hibernate.repository.io.HibernateUtil.getSessionFacto
 
 public class EmployeeRepoImpl implements EmployeeRepository {
 
+    private static String TABLE = Employee.class.getSimpleName();
+
     public Employee getById(Integer id){
         Session session = getSessionFactory().openSession();
         Employee employee = session.get(Employee.class, id);
@@ -21,7 +23,7 @@ public class EmployeeRepoImpl implements EmployeeRepository {
 
     public List<Employee> getAll() {
         Session session = getSessionFactory().openSession();
-        List employees = session.createQuery("FROM employees").list();
+        List employees = session.createQuery("FROM " + TABLE).list();
 
         session.close();
         return employees;

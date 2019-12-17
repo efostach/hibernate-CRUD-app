@@ -11,6 +11,8 @@ import static com.efostach.hibernate.repository.io.HibernateUtil.getSessionFacto
 
 public class TeamRepoImpl implements TeamRepository {
 
+    private static String TABLE = Team.class.getSimpleName();
+
     public Team getById(Integer id){
         Session session = getSessionFactory().openSession();
         Team team = session.get(Team.class, id);
@@ -21,7 +23,7 @@ public class TeamRepoImpl implements TeamRepository {
 
     public List<Team> getBySkill(Integer skillId) {
         Session session = getSessionFactory().openSession();
-        List teams =  session.createQuery("FROM teams t WHERE t.skill_id = " + skillId).list();
+        List teams =  session.createQuery("FROM " + TABLE + " WHERE skill_id = " + skillId).list();
 
         session.close();
         return teams;
@@ -29,7 +31,7 @@ public class TeamRepoImpl implements TeamRepository {
 
     public List<Team> getAll() {
         Session session = getSessionFactory().openSession();
-        List teams = session.createQuery("FROM teams").list();
+        List teams = session.createQuery("FROM " + TABLE).list();
 
         session.close();
         return teams;

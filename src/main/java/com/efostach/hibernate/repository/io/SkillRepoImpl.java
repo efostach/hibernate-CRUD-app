@@ -11,6 +11,8 @@ import static com.efostach.hibernate.repository.io.HibernateUtil.getSessionFacto
 
 public class SkillRepoImpl implements SkillRepository {
 
+    private static String TABLE = Skill.class.getSimpleName();
+
     public Skill getById(Integer id){
         Session session = getSessionFactory().openSession();
         Skill skill = session.get(Skill.class, id);
@@ -21,7 +23,7 @@ public class SkillRepoImpl implements SkillRepository {
 
     public List<Skill> getAll() {
         Session session = getSessionFactory().openSession();
-        List skills = session.createQuery("FROM skills").list();
+        List skills = session.createQuery("FROM " + TABLE).list();
 
         session.close();
         return skills;

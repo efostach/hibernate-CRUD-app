@@ -11,6 +11,7 @@ import static com.efostach.hibernate.repository.io.HibernateUtil.getSessionFacto
 
 public class CustomerRepoImpl implements CustomerRepository {
 
+    private static String TABLE = Customer.class.getSimpleName();
 
     public Customer getById(Integer id){
         Session session = getSessionFactory().openSession();
@@ -22,7 +23,7 @@ public class CustomerRepoImpl implements CustomerRepository {
 
     public List<Customer> getAll() {
         Session session = getSessionFactory().openSession();
-        List customers = session.createQuery("FROM customers").list();
+        List customers = session.createQuery("FROM " + TABLE).list();
 
         session.close();
         return customers;
