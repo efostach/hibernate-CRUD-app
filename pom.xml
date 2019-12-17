@@ -72,7 +72,7 @@
                     <driver>com.mysql.cj.jdbc.Driver</driver>
                     <url>jdbc:mysql://localhost:3306/company_projects_structure</url>
                     <username>root</username>
-                    <password>password</password>
+                    <password>Tktyf+7*%</password>
                 </configuration>
                 <executions>
                     <execution>
