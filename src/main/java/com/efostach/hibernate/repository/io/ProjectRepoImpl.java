@@ -23,11 +23,10 @@ public class ProjectRepoImpl implements ProjectRepository {
 
     public List<Project> getByTeam(Integer teamId) {
         Session session = getSessionFactory().openSession();
-        List projects;
-        projects = session.createQuery("FROM Project p JOIN p.teams t WHERE t.teamId =" + teamId).list();
+        List projects = session.createQuery("FROM Project p LEFT JOIN FETCH p.teams t WHERE t.id =" + teamId).list();
 
         session.close();
-        return projects;
+        return (List<Project>) projects;
     }
 
     public List<Project> getBySkill(Integer skillId) {
@@ -35,7 +34,7 @@ public class ProjectRepoImpl implements ProjectRepository {
         List projects = session.createQuery("FROM " + TABLE + " t WHERE t.skill_id = " + skillId).list();
 
         session.close();
-        return projects;
+        return (List<Project>) projects;
     }
 
     public List<Project> getByCost(Integer cost) {
@@ -43,7 +42,7 @@ public class ProjectRepoImpl implements ProjectRepository {
         List projects = session.createQuery("FROM " + TABLE + " WHERE cost = " + cost).list();
 
         session.close();
-        return projects;
+        return (List<Project>) projects;
     }
 
     public List<Project> getAll() {
@@ -51,7 +50,7 @@ public class ProjectRepoImpl implements ProjectRepository {
         List projects = session.createQuery("FROM " + TABLE).list();
 
         session.close();
-        return projects;
+        return (List<Project>) projects;
     }
 
     public void create(Project project) {

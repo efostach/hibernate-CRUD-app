@@ -26,7 +26,7 @@ public class EmployeeRepoImpl implements EmployeeRepository {
         List employees = session.createQuery("FROM " + TABLE).list();
 
         session.close();
-        return employees;
+        return (List<Employee>) employees;
     }
 
     public void create(Employee employee){

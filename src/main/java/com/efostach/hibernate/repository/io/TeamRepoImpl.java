@@ -26,7 +26,7 @@ public class TeamRepoImpl implements TeamRepository {
         List teams =  session.createQuery("FROM " + TABLE + " WHERE skill_id = " + skillId).list();
 
         session.close();
-        return teams;
+        return (List<Team>) teams;
     }
 
     public List<Team> getAll() {
@@ -34,7 +34,7 @@ public class TeamRepoImpl implements TeamRepository {
         List teams = session.createQuery("FROM " + TABLE).list();
 
         session.close();
-        return teams;
+        return (List<Team>) teams;
     }
 
     public void create(Team team){

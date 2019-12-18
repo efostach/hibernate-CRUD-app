@@ -26,7 +26,7 @@ public class CustomerRepoImpl implements CustomerRepository {
         List customers = session.createQuery("FROM " + TABLE).list();
 
         session.close();
-        return customers;
+        return (List<Customer>) customers;
     }
 
     public void create(Customer customer){

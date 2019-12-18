@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.efostach.hibernate.model.Skill" table="company_projects_structure">
+    <class name="com.efostach.hibernate.model.Skill" table="CompanyTeamsStructure">
         <meta attribute="class-description">
             This class contains skills details.
         </meta>

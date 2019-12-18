@@ -26,7 +26,7 @@ public class SkillRepoImpl implements SkillRepository {
         List skills = session.createQuery("FROM " + TABLE).list();
 
         session.close();
-        return skills;
+        return (List<Skill>) skills;
     }
 
     public void create(Skill skill){
