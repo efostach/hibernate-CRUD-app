@@ -12,7 +12,7 @@ public class Team {
     private Integer id;
     @Column(name = "name", nullable = false)
     private String name;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable (name="project_teams",
             joinColumns=@JoinColumn (name="team_id"),
             inverseJoinColumns=@JoinColumn(name="project_id"))

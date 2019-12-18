@@ -17,12 +17,12 @@ public class Project {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition="status", nullable = false)
     private ProjectStatus status;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable (name="customer_projects",
             joinColumns=@JoinColumn (name="project_id"),
             inverseJoinColumns=@JoinColumn(name="customer_id"))
     private List<Customer> customers;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable (name="project_teams",
             joinColumns=@JoinColumn (name="project_id"),
             inverseJoinColumns=@JoinColumn(name="team_id"))

@@ -13,7 +13,7 @@ public class ProjectRepoImpl implements ProjectRepository {
 
     private static String TABLE = Project.class.getSimpleName();
 
-    public Project getById(Integer id){
+    public Project getById(Integer id) {
         Session session = getSessionFactory().openSession();
         Project project = session.get(Project.class, id);
 
@@ -23,7 +23,8 @@ public class ProjectRepoImpl implements ProjectRepository {
 
     public List<Project> getByTeam(Integer teamId) {
         Session session = getSessionFactory().openSession();
-        List projects =  session.createQuery("FROM " + TABLE + " WHERE team_id = " + teamId).list();
+        List projects;
+        projects = session.createQuery("FROM Project p JOIN p.teams t WHERE t.teamId =" + teamId).list();
 
         session.close();
         return projects;
@@ -31,7 +32,7 @@ public class ProjectRepoImpl implements ProjectRepository {
 
     public List<Project> getBySkill(Integer skillId) {
         Session session = getSessionFactory().openSession();
-        List projects =  session.createQuery("FROM " + TABLE + " WHERE skill_id = " + skillId).list();
+        List projects = session.createQuery("FROM " + TABLE + " t WHERE t.skill_id = " + skillId).list();
 
         session.close();
         return projects;
@@ -39,7 +40,7 @@ public class ProjectRepoImpl implements ProjectRepository {
 
     public List<Project> getByCost(Integer cost) {
         Session session = getSessionFactory().openSession();
-        List projects =  session.createQuery("FROM " + TABLE + " WHERE cost = " + cost).list();
+        List projects = session.createQuery("FROM " + TABLE + " WHERE cost = " + cost).list();
 
         session.close();
         return projects;
@@ -53,7 +54,7 @@ public class ProjectRepoImpl implements ProjectRepository {
         return projects;
     }
 
-    public void create(Project project){
+    public void create(Project project) {
         Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
