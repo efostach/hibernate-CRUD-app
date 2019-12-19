@@ -81,7 +81,7 @@
                     <driver>com.mysql.jdbc.Driver</driver>
                     <url>jdbc:mysql://localhost:3306/company_projects_structure</url>
                     <username>root</username>
-                    <password>Tktyf+7*%</password>
+                    <password>root</password>
                 </configuration>
                 <executions>
                     <execution>
