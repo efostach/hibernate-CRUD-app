@@ -18,7 +18,7 @@ public class Employee {
     private Integer workExperience;
     @Column(name = "team_id")
     private Integer teamId;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable (name="employee_skills",
             joinColumns=@JoinColumn (name="employee_id"),
             inverseJoinColumns=@JoinColumn(name="skill_id"))

@@ -12,7 +12,7 @@ public class Skill {
     private Integer id;
     @Column(name = "name", nullable = false)
     private String name;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable (name="employee_skills",
             joinColumns=@JoinColumn (name="skill_id"),
             inverseJoinColumns=@JoinColumn(name="employee_id"))
