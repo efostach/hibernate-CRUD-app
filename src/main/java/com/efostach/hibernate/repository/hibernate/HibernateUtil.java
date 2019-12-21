@@ -1,4 +1,4 @@
-package com.efostach.hibernate.repository.io;
+package com.efostach.hibernate.repository.hibernate;
 
 import com.efostach.hibernate.model.*;
 import org.hibernate.SessionFactory;

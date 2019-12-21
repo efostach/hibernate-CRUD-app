@@ -1,4 +1,4 @@
-package com.efostach.hibernate.repository.io;
+package com.efostach.hibernate.repository.hibernate;
 
 import com.efostach.hibernate.model.Skill;
 import com.efostach.hibernate.repository.SkillRepository;
@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-import static com.efostach.hibernate.repository.io.HibernateUtil.getSessionFactory;
+import static com.efostach.hibernate.repository.hibernate.HibernateUtil.getSessionFactory;
 
 public class SkillRepoImpl implements SkillRepository {
 

@@ -1,4 +1,4 @@
-package com.efostach.hibernate.repository.io;
+package com.efostach.hibernate.repository.hibernate;
 
 import com.efostach.hibernate.model.Customer;
 import com.efostach.hibernate.repository.CustomerRepository;
@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-import static com.efostach.hibernate.repository.io.HibernateUtil.getSessionFactory;
+import static com.efostach.hibernate.repository.hibernate.HibernateUtil.getSessionFactory;
 
 public class CustomerRepoImpl implements CustomerRepository {
 

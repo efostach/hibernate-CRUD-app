@@ -2,7 +2,7 @@ package com.efostach.hibernate.controller;
 
 import com.efostach.hibernate.model.Project;
 import com.efostach.hibernate.model.ProjectStatus;
-import com.efostach.hibernate.repository.io.ProjectRepoImpl;
+import com.efostach.hibernate.repository.hibernate.ProjectRepoImpl;
 
 import java.util.List;
 

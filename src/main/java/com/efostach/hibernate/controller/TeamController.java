@@ -1,7 +1,7 @@
 package com.efostach.hibernate.controller;
 
 import com.efostach.hibernate.model.Team;
-import com.efostach.hibernate.repository.io.TeamRepoImpl;
+import com.efostach.hibernate.repository.hibernate.TeamRepoImpl;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.efostach.hibernate.controller;
 
 import com.efostach.hibernate.model.Skill;
-import com.efostach.hibernate.repository.io.SkillRepoImpl;
+import com.efostach.hibernate.repository.hibernate.SkillRepoImpl;
 
 import java.util.List;
 
